@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FSD-Landmark Gallery</title>
+    <link rel="stylesheet" href="static\css\style.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body>
+
+    <h1>Explore Faisalabad's Landmark Gallery</h1>
+
+    <!-- Description about Faisalabad -->
+    <div class="city-description">
+        <p>Faisalabad, known as the Manchester of Pakistan, is a vibrant and historical city located in the heart of Punjab. It is renowned for its textile industry, historical landmarks, and beautiful landscapes. Faisalabad offers visitors a unique blend of modernity and tradition, with bustling bazaars, beautiful gardens, and iconic sites. The city is a must-visit for anyone interested in experiencing Pakistan's rich cultural heritage.</p>
+    </div>
+
+    <!-- Search Bar -->
+    <input type="text" id="search-bar" placeholder="Search landmarks..." onkeyup="searchLandmarks()">
+
+    <div class="container" id="landmark-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/landmark1.png') }}" alt="Landmark 1">
+            <div class="card-info">
+                <h3>IQBAL STADIUM</h3>
+                <p>Iqbal Stadium in Faisalabad is a must-visit for cricket enthusiasts and sports lovers...</p>
+                <p><strong>Latitude:</strong> 31.5204, <strong>Longitude:</strong> 73.6837</p>
+                <p><strong>Opening Hours:</strong> 9 AM - 9 PM</p>
+                <p><strong>Nearby Attractions:</strong> Clock Tower, Canal Road</p>
+                <a href="https://en.wikipedia.org/wiki/Iqbal_Stadium" target="_blank" class="learn-more-btn">Learn More</a>
+            </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/landmark2.png') }}" alt="Landmark 2">
+            <div class="card-info">
+                <h3>CLOCK TOWER</h3>
+                <p>The Clock Tower in Faisalabad, also known as Ghanta Ghar, is one of the oldest and most iconic landmarks...</p>
+                <p><strong>Latitude:</strong> 31.5205, <strong>Longitude:</strong> 73.6840</p>
+                <p><strong>Opening Hours:</strong> 10 AM - 6 PM</p>
+                <p><strong>Nearby Attractions:</strong> Eight-Bazaar Layout, Kettle and Cup Chowk</p>
+                <a href="https://en.wikipedia.org/wiki/Faisalabad_Clock_Tower" target="_blank" class="learn-more-btn">Learn More</a>
+            </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/landmark3.png') }}" alt="Landmark 3">
+            <div class="card-info">
+                <h3>CANAL ROAD</h3>
+                <p>Canal Road in Faisalabad runs alongside the Rakh Branch Canal, serving as a key thoroughfare...</p>
+                <p><strong>Latitude:</strong> 31.5202, <strong>Longitude:</strong> 73.6835</p>
+                <p><strong>Opening Hours:</strong> Open 24 hours</p>
+                <p><strong>Nearby Attractions:</strong> Canal Park, University of Agriculture</p>
+                <a href="https://en.wikipedia.org/wiki/Canal_Road_(Faisalabad)" target="_blank" class="learn-more-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/landmark4.png') }}" alt="Landmark 4">
+            <div class="card-info">
+                <h3>KETTLE AND CUP CHOWK</h3>
+                <p>Kettle and Cup Chowk is a prominent roundabout in Faisalabad, symbolizing the city's connection to the textile industry...</p>
+                <p><strong>Latitude:</strong> 31.5199, <strong>Longitude:</strong> 73.6843</p>
+                <p><strong>Opening Hours:</strong> Open 24 hours</p>
+                <p><strong>Nearby Attractions:</strong> Canal Road, Commercial Hub</p>
+                <a href="https://en.wikipedia.org/wiki/Kettle_and_Cup_Chowk" target="_blank" class="learn-more-btn">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/landmark5.png') }}" alt="Landmark 5">
+            <div class="card-info">
+                <h3>UNIVERSITY OF AGRICULTURE</h3>
+                <p>The University of Agriculture, Faisalabad (UAF) is a prestigious institution focusing on agricultural education...</p>
+                <p><strong>Latitude:</strong> 31.5207, <strong>Longitude:</strong> 73.6833</p>
+                <p><strong>Opening Hours:</strong> 8 AM - 5 PM</p>
+                <p><strong>Nearby Attractions:</strong> Agricultural Fields, Research Centers</p>
+                <a href="https://en.wikipedia.org/wiki/University_of_Agriculture,_Faisalabad" target="_blank" class="learn-more-btn">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- History of Faisalabad -->
+    <div class="history">
+        <h2>History of Faisalabad</h2>
+        <p>Faisalabad was founded in 1898 as Lyallpur, named after Sir James Lyall, the Lieutenant Governor of the Punjab. It was developed as a market town to cater to the agricultural needs of the region. Over time, Faisalabad evolved into a major industrial hub, particularly in the textile industry, making it one of Pakistan's largest cities. Its historical significance, rich culture, and economic contributions continue to shape its identity today.</p>
+    </div>
+
+    <!-- Map Container (Faisalabad map) -->
+    <div id="map" style="height: 400px; margin-top: 30px; width: 80%; margin-left: 10%;"></div>
+
+    <!-- Floating Action Button -->
+    <button class="floating-btn" onclick="window.scrollTo(0, 0)">Back to Top</button>
+
+    <footer>
+        <p>&copy; 2025 Landmark Gallery. All Rights Reserved.</p>
+        <p><strong class="holders">Website holders<br>Nadeem Mushtaq <br>Abdur Rehman <br> Bilal Tariq</strong></p>
+
+        <!-- Social Media Links -->
+<div class="social-media-links">
+    <a href="https://www.instagram.com/faisalabadgram/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1024px-Instagram_logo_2022.svg.png" alt="Instagram" style="width: 40px; height: 40px; margin: 5px;">
+    </a>
+
+    <a href="https://www.facebook.com/FSD41" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style="width: 40px; height: 40px; margin: 5px;">
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=Ea_E0IpCCAc" target="_blank">
+        <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png" alt="YouTube" style="width: 40px; height: 40px; margin: 5px;">
+    </a>
+</div>
+
+    </footer>
+
+    <script>
+        function searchLandmarks() {
+            const input = document.getElementById('search-bar');
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                let title = card.querySelector('h3').textContent.toLowerCase();
+                if (title.indexOf(filter) > -1) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize Leaflet Map for Faisalabad
+        var map = L.map('map').setView([31.5204, 73.6837], 13);  // Faisalabad Coordinates
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add a marker for Faisalabad city center
+        L.marker([31.5204, 73.6837]).addTo(map)
+            .bindPopup("Faisalabad, Pakistan")
+            .openPopup();
+    </script>
+
+</body>
+</html>
